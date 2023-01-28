@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+    }
+}
+
+.title {
+    font-size: 4em;
+    font-weight: 700;
+    margin-bottom: 2em;
+}
+
+.image-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+}
+
+.image-col img {
+    object-fit: contain;
+}
