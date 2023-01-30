@@ -9,14 +9,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>
-            {{.PageTitle}}
-        </h1>
+    <div class="container-sm py-5 px-sm-5">
+        <div class="py-4">
+            <h1>
+                {{.PageTitle}}
+            </h1>
+        </div>
 
         <div class="vstack gap-3">
             {{range .Images}}
-                <img src="{{.Filename}}" class="rounded img-fluid" alt=""/>
+                <img 
+                src="{{.Filename}}" 
+                loading="{{.LoadingPriority}}" 
+                class="rounded shadow img-fluid" 
+                alt=""
+                width="{{.Width}}"
+                height="{{.Height}}"
+            />
             {{end}}
         </div>
     </div>

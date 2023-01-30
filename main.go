@@ -3,18 +3,24 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"image/jpeg"
 	"io/ioutil"
 	"log"
 	"os"
+	"path/filepath"
 )
 
-type Filepath struct {
+type ImageTemplateElement struct {
+    Index int
     Filename string
+    LoadingPriority string
+    Width int
+    Height int
 }
 
 type CalmingImagesData struct {
     PageTitle string
-    Images []Filepath
+    Images []ImageTemplateElement
 }
 
 func main() {
@@ -28,10 +34,26 @@ func main() {
         log.Fatal(err)
     }
 
-    var images []Filepath
-    for _, file := range files {
+    var images []ImageTemplateElement
+    for i, file := range files {
         if !file.IsDir() {
-            images = append(images, Filepath{Filename: fmt.Sprintf("images/%s", file.Name())})
+
+            // Get Image Size
+            i_width, i_height := getImageSize(DIRECTORY, file.Name())
+
+            // Define Loading Priority
+            loadingPriority := "eager"
+            if i+1 > 4 {
+                loadingPriority = "lazy"
+            }
+
+            images = append(images, ImageTemplateElement{
+                Index: i+1,
+                Filename: fmt.Sprintf("images/%s", file.Name()),
+                LoadingPriority: loadingPriority,
+                Width: i_width,
+                Height: i_height,
+            })
         }
     }
 
@@ -54,4 +76,20 @@ func main() {
         log.Fatal(err)
     }
     
+}
+
+
+func getImageSize(basePath string, imageName string) (int, int) {
+    if reader, err := os.Open(filepath.Join(basePath, imageName)); err == nil {
+        defer reader.Close()
+        fmt.Println(reader.Name())
+        image, err := jpeg.DecodeConfig(reader)
+        if err != nil {
+            log.Fatal(err)
+        }
+        return image.Width, image.Height
+    } else {
+        log.Fatal(err)
+    }
+    return 0,0
 }
