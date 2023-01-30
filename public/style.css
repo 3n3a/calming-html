@@ -1,65 +1,32 @@
-/*.RESET.*/
-html {
-  box-sizing: border-box;
-  font-size: 16px;
+:root {
+  --primary: #FF69B4;
+  --secondary: #FF00FF;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
+.btn-secondary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
 }
 
-ol, ul {
-  list-style: none;
+.badge-primary {
+  background-color: var(--primary);
+  color: #fff;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+.badge-secondary {
+  background-color: var(--secondary);
+  color: #fff;
 }
 
-
-/*.MINE.*/
-
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 2em;
+.text-primary {
+  color: var(--primary);
 }
 
-@media only screen and (min-width: 768px) {
-    .container {
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-    }
-}
-
-.title {
-    font-size: 4em;
-    font-weight: 700;
-    margin-bottom: 2em;
-}
-
-.image-col {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    justify-content: center;
-}
-
-.image-col img {
-    object-fit: contain;
-    border-radius: 5px;
+.text-secondary {
+  color: var(--secondary);
 }
