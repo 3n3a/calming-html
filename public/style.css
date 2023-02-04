@@ -31,19 +31,15 @@
   color: var(--secondary);
 }
 
-img:empty {
-  background: 
-    linear-gradient(0.25turn, transparent, #fff, transparent),
-  background-repeat: no-repeat;
-  animation: loading 1.5s infinite;
+img:empty,.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
 }
 
-/*
-
-@keyframes loading {  
-  to {
-    background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
   }
 }
-
-*/
