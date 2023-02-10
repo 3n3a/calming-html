@@ -33,7 +33,7 @@ func main() {
     DIRECTORY := "public/images"
     LAYOUT_NAME := "layout.html"
     OUT_PATH := "public/index.html"
-    IMAGE_WEB_BASE_PATH := "images"
+    IMAGE_WEB_BASE_PATH := "https://ik.imagekit.io/njhey0rxzni"
 
     err := tranformAllImagesToWebp(DIRECTORY)
     if err != nil {
